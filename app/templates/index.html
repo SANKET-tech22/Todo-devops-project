@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DevOps ToDo App</title>
+</head>
+
+<body>
+
+<h1>DevOps ToDo Application</h1>
+
+<form method="POST">
+<input type="text" name="task" placeholder="Enter task"/>
+<button type="submit">Add Task</button>
+</form>
+
+<ul>
+{% for todo in todos %}
+<li>{{todo}}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
