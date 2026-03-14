@@ -31,8 +31,8 @@ pipeline {
             steps {
                 sh '''
                 export KUBECONFIG=/home/ubuntu/.kube/config
-                sh 'kubectl apply -f k8s/'
-                sh 'kubectl set image deployment/todo-app todo-app=$DOCKER_IMAGE:$BUILD_NUMBER'
+                kubectl apply -f k8s/
+                kubectl set image deployment/todo-app todo-app=$DOCKER_IMAGE:$BUILD_NUMBER
                 '''
             }
         }
