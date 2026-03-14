@@ -1,83 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>DevOps ToDo App</title>
 
 <style>
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg,#1f4037,#99f2c8);
-    margin:0;
-    padding:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+font-family:Arial;
+background:linear-gradient(135deg,#1f4037,#99f2c8);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .container{
-    background:white;
-    padding:40px;
-    border-radius:10px;
-    width:400px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+background:white;
+padding:40px;
+border-radius:10px;
+width:420px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 h1{
-    text-align:center;
-    margin-bottom:25px;
-    color:#333;
+text-align:center;
 }
 
 form{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
+display:flex;
+gap:10px;
+margin-bottom:20px;
 }
 
 input{
-    flex:1;
-    padding:10px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    font-size:14px;
+flex:1;
+padding:10px;
+border-radius:5px;
+border:1px solid #ccc;
 }
 
 button{
-    background:#2ecc71;
-    color:white;
-    border:none;
-    padding:10px 16px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:bold;
+background:#2ecc71;
+border:none;
+color:white;
+padding:10px 15px;
+border-radius:5px;
+cursor:pointer;
 }
 
 button:hover{
-    background:#27ae60;
+background:#27ae60;
 }
 
 ul{
-    list-style:none;
-    padding:0;
+list-style:none;
+padding:0;
 }
 
 li{
-    background:#f4f6f7;
-    padding:12px;
-    border-radius:5px;
-    margin-bottom:10px;
-    font-size:14px;
-    border-left:5px solid #2ecc71;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#f4f6f7;
+padding:10px;
+border-radius:5px;
+margin-bottom:8px;
+}
+
+.delete{
+background:#e74c3c;
+padding:5px 10px;
+border-radius:4px;
+text-decoration:none;
+color:white;
+}
+
+.delete:hover{
+background:#c0392b;
 }
 
 .footer{
-    text-align:center;
-    margin-top:15px;
-    font-size:12px;
-    color:#777;
+text-align:center;
+font-size:12px;
+margin-top:10px;
+color:#777;
 }
 
 </style>
@@ -90,13 +96,16 @@ li{
 <h1>DevOps ToDo App</h1>
 
 <form method="POST">
-<input type="text" name="task" placeholder="Enter your task..." required>
+<input type="text" name="task" placeholder="Enter task..." required>
 <button type="submit">Add</button>
 </form>
 
 <ul>
 {% for todo in todos %}
-<li>{{todo.task}}</li>
+<li>
+{{todo.task}}
+<a class="delete" href="/delete/{{todo.id}}">Delete</a>
+</li>
 {% endfor %}
 </ul>
 
@@ -107,4 +116,5 @@ Powered by Flask • Docker • Jenkins • Kubernetes
 </div>
 
 </body>
+
 </html>

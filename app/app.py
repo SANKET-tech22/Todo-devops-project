@@ -32,6 +32,13 @@ def index():
     todos = Todo.query.all()
     return render_template("index.html", todos=todos)
 
+@app.route("/delete/<int:id>")
+def delete(id):
+    task = Todo.query.get_or_404(id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect("/")
+
 
 if __name__ == "__main__":
     with app.app_context():
